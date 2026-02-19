@@ -52,12 +52,12 @@ Lista los nombres de todos los meseros del turno "Noche" ordenados alfabeticamen
 ---
 
 ### Pregunta 6
-Lista las 10 ordenes con el total mas alto, mostrando el id de la orden, total y propina.
+¿Cual es el total promedio de las 10 ordenes con mayor monto?
 
 ---
 
 ### Pregunta 7
-¿Cuantas ordenes ha atendido cada mesero? Muestra nombre del mesero y cantidad de ordenes.
+¿Cual es el mesero que ha atendido mas ordenes? Muestra su nombre y el total de ordenes.
 
 ---
 
@@ -72,7 +72,7 @@ Lista las 10 ordenes con el total mas alto, mostrando el id de la orden, total y
 ---
 
 ### Pregunta 10
-Lista los meseros que han atendido mas de 20 ordenes.
+¿Cuantos meseros han atendido mas de 20 ordenes?
 
 ---
 
@@ -82,7 +82,7 @@ Lista los meseros que han atendido mas de 20 ordenes.
 ---
 
 ### Pregunta 12
-¿Cuales mesas de capacidad 6 o mas personas estan actualmente disponibles?
+¿Cuantas mesas de capacidad 6 o mas personas estan actualmente disponibles?
 
 ---
 

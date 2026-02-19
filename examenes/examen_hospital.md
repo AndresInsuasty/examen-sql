@@ -51,7 +51,7 @@ Lista los 5 diagnosticos mas frecuentes con su cantidad de casos.
 ---
 
 ### Pregunta 6
-¿Cuantas consultas ha realizado cada doctor? Muestra nombre del doctor y cantidad.
+¿Cual es el doctor que ha realizado mas consultas? Muestra su nombre y el total de consultas.
 
 ---
 
@@ -61,27 +61,27 @@ Lista los 5 diagnosticos mas frecuentes con su cantidad de casos.
 ---
 
 ### Pregunta 8
-Lista los pacientes menores de 18 anos junto con su tipo de sangre.
+¿Cuantos pacientes menores de 18 anos hay y cual es su edad promedio?
 
 ---
 
 ### Pregunta 9
-¿Cual es el ingreso total generado por cada especialidad medica?
+¿Cual es la especialidad medica que genera mas ingresos y cuanto es el total?
 
 ---
 
 ### Pregunta 10
-¿Cuantos pacientes hombres y mujeres hay en cada rango de edad? (0-17, 18-40, 41-65, 65+)
+¿Que rango de edad y genero tiene la mayor cantidad de pacientes?
 
 ---
 
 ### Pregunta 11
-Lista los doctores que han atendido mas de 30 consultas, mostrando nombre y total de consultas.
+¿Cuantos doctores han atendido mas de 30 consultas?
 
 ---
 
 ### Pregunta 12
-¿Cuales pacientes han tenido mas de 3 consultas en el ultimo ano?
+¿Cuantos pacientes han tenido mas de 3 consultas en el ultimo ano?
 
 ---
 

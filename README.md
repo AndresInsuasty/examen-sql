@@ -17,7 +17,23 @@ El repositorio incluye 5 bases de datos SQLite con tematicas diferentes:
 Cada examen incluye:
 - Diagrama Entidad-Relacion en formato ASCII
 - 12 preguntas de logica de negocio en lenguaje natural
-- Solucion con query SQL y respuesta explicada
+- Solucion con query SQL y respuesta exacta
+- Comentarios humoristicos para analistas de datos
+
+## Caracteristicas
+
+### Diseño de Preguntas
+
+Las preguntas están **optimizadas para evaluación en papel**:
+- ✅ **80% de preguntas** retornan 1-3 valores (ideales para escribir a mano)
+- ✅ **20% de preguntas** retornan 4-8 filas (tablas pequeñas de categorías)
+- ✅ **0% de preguntas** retornan listas largas (>8 filas)
+- ✅ Todas las soluciones incluyen la **respuesta exacta** para facilitar la calificación
+
+Esto permite que:
+- Los estudiantes completen el examen en papel en **15-20 minutos**
+- Los profesores califiquen rápidamente con respuestas puntuales
+- No sea necesario escribir docenas de filas a mano
 
 ## Estructura del Proyecto
 
@@ -25,6 +41,7 @@ Cada examen incluye:
 examen-sql/
 ├── pyproject.toml              # Configuracion del proyecto
 ├── README.md                   # Este archivo
+├── verify_questions.py         # Script de validacion (ver abajo)
 ├── src/
 │   └── generadores/            # Scripts para generar las BDs
 │       ├── gimnasio.py
@@ -94,6 +111,19 @@ uv run python src/generadores/hospital.py
 uv run python src/generadores/banco.py
 uv run python src/generadores/bar.py
 ```
+
+### Validar preguntas
+
+Después de regenerar las bases de datos, verifica que todas las preguntas sigan retornando respuestas cortas:
+
+```bash
+python3 verify_questions.py
+```
+
+El script valida que las 60 preguntas (12 por examen) tengan respuestas apropiadas:
+- ✅ Cortas: 1-3 filas
+- ⚠️ Medianas: 4-8 filas
+- ❌ Largas: >8 filas (no deberían existir)
 
 ## Temas SQL Evaluados
 

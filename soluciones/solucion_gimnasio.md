@@ -13,6 +13,8 @@ FROM miembros
 WHERE activo = 1;
 ```
 
+**Respuesta:** 129
+
 *Spoiler: Mas que los que realmente van al gym en enero.*
 
 ---
@@ -26,19 +28,23 @@ FROM miembros
 WHERE tipo_membresia = 'VIP';
 ```
 
+**Respuesta:** 41.16
+
 *Los VIP: porque pagar mas te hace sentir mas fit.*
 
 ---
 
 ## Pregunta 3
-**Lista el nombre y edad de todos los miembros mayores de 50 anos, ordenados de mayor a menor edad.**
+**¿Cuantos miembros mayores de 50 anos hay y cual es su edad promedio?**
 
 ```sql
-SELECT nombre, edad
+SELECT COUNT(*) AS cantidad,
+       ROUND(AVG(edad), 2) AS edad_promedio
 FROM miembros
-WHERE edad > 50
-ORDER BY edad DESC;
+WHERE edad > 50;
 ```
+
+**Respuesta:** 47 miembros, edad promedio: 57.17 años
 
 *La edad es solo un numero... especialmente cuando haces cardio.*
 
@@ -67,6 +73,8 @@ ORDER BY capacidad_maxima DESC
 LIMIT 1;
 ```
 
+**Respuesta:** Spinning (capacidad: 30)
+
 *Capacidad maxima != asistencia real. Nunca.*
 
 ---
@@ -93,21 +101,28 @@ FROM asistencias
 WHERE fecha >= DATE('now', '-1 month');
 ```
 
+**Respuesta:** 500
+
 *Nota: Los datos pueden variar segun la proximidad al verano.*
 
 ---
 
 ## Pregunta 8
-**¿Cual es la calificacion promedio de cada clase? Muestra solo las clases con promedio mayor a 3.**
+**¿Cuantas clases tienen una calificacion promedio mayor a 3?**
 
 ```sql
-SELECT c.nombre, AVG(a.calificacion) AS calificacion_promedio
-FROM clases c
-JOIN asistencias a ON c.id = a.clase_id
-WHERE a.calificacion IS NOT NULL
-GROUP BY c.id, c.nombre
-HAVING AVG(a.calificacion) > 3;
+SELECT COUNT(*) AS clases_con_buena_calificacion
+FROM (
+    SELECT c.id
+    FROM clases c
+    JOIN asistencias a ON c.id = a.clase_id
+    WHERE a.calificacion IS NOT NULL
+    GROUP BY c.id, c.nombre
+    HAVING AVG(a.calificacion) > 3
+);
 ```
+
+**Respuesta:** 10
 
 *Si tu clase tiene menos de 3 estrellas, quizas es hora de cambiar la playlist.*
 
@@ -130,15 +145,17 @@ LIMIT 5;
 ---
 
 ## Pregunta 10
-**Lista el nombre de los miembros que han asistido a la clase de "Spinning" junto con la fecha de asistencia.**
+**¿Cuantas asistencias ha tenido la clase "Spinning" y cual es la calificacion promedio?**
 
 ```sql
-SELECT m.nombre, a.fecha
-FROM miembros m
-JOIN asistencias a ON m.id = a.miembro_id
+SELECT COUNT(*) AS cantidad_asistencias,
+       ROUND(AVG(calificacion), 2) AS calificacion_promedio
+FROM asistencias a
 JOIN clases c ON a.clase_id = c.id
 WHERE c.nombre = 'Spinning';
 ```
+
+**Respuesta:** 38 asistencias, calificación promedio: 3.69
 
 *Spinning: donde pagas para andar en bicicleta sin ir a ninguna parte.*
 

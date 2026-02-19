@@ -41,6 +41,8 @@ FROM bebidas
 WHERE categoria = 'Coctel';
 ```
 
+**Respuesta:** 9.64
+
 *El precio del arte liquido.*
 
 ---
@@ -53,6 +55,8 @@ SELECT COUNT(*) AS bebidas_no_disponibles
 FROM bebidas
 WHERE disponible = 0;
 ```
+
+**Respuesta:** 2
 
 *Las que estan "en pausa" hasta que llegue el proveedor.*
 
@@ -85,6 +89,8 @@ ORDER BY total_vendido DESC
 LIMIT 1;
 ```
 
+**Respuesta:** Cosmopolitan (85 unidades)
+
 *La estrella del menu. Probablemente tiene su propio club de fans.*
 
 ---
@@ -105,15 +111,18 @@ ORDER BY ingresos_totales DESC;
 ---
 
 ## Pregunta 8
-**Lista los bartenders y cuantas ventas ha realizado cada uno.**
+**¿Cual es el bartender que ha realizado mas ventas? Muestra su nombre y el total de ventas.**
 
 ```sql
 SELECT bt.nombre, COUNT(*) AS total_ventas
 FROM bartenders bt
 JOIN ventas v ON bt.id = v.bartender_id
 GROUP BY bt.id, bt.nombre
-ORDER BY total_ventas DESC;
+ORDER BY total_ventas DESC
+LIMIT 1;
 ```
+
+**Respuesta:** Rico Heredia Torralba (60 ventas)
 
 *El ranking de productividad. Con estilo.*
 
@@ -145,6 +154,8 @@ ORDER BY experiencia_anios DESC
 LIMIT 1;
 ```
 
+**Respuesta:** Paula Olmedo Pedrero (15 años)
+
 *El guardian de las recetas tradicionales. Probablemente juzga tus gustos.*
 
 ---
@@ -164,15 +175,18 @@ ORDER BY precio ASC;
 ---
 
 ## Pregunta 12
-**¿Cual es el promedio de unidades vendidas por venta para cada bartender?**
+**¿Cual bartender tiene el mayor promedio de unidades vendidas por venta?**
 
 ```sql
-SELECT bt.nombre, AVG(v.cantidad) AS promedio_unidades
+SELECT bt.nombre, ROUND(AVG(v.cantidad), 2) AS promedio_unidades
 FROM bartenders bt
 JOIN ventas v ON bt.id = v.bartender_id
 GROUP BY bt.id, bt.nombre
-ORDER BY promedio_unidades DESC;
+ORDER BY promedio_unidades DESC
+LIMIT 1;
 ```
+
+**Respuesta:** Nélida Beltran Capdevila (2.03 unidades promedio)
 
 *El que vende mas por ticket es el que mejor convence... o el que mejor mezcla.*
 

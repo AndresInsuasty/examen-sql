@@ -26,7 +26,7 @@
 ## Preguntas
 
 ### Pregunta 1
-¿Cuantos clientes tiene el banco en cada ciudad?
+¿Cual es la ciudad con mas clientes del banco y cuantos tiene?
 
 ---
 
@@ -36,7 +36,7 @@
 ---
 
 ### Pregunta 3
-Lista los 10 clientes con mayor saldo total (sumando todas sus cuentas).
+¿Cual es el saldo promedio de los 10 clientes con mayor saldo total?
 
 ---
 
@@ -51,7 +51,7 @@ Lista los 10 clientes con mayor saldo total (sumando todas sus cuentas).
 ---
 
 ### Pregunta 6
-Lista los clientes que tienen mas de una cuenta, mostrando nombre y cantidad de cuentas.
+¿Cuantos clientes tienen mas de una cuenta y cual es el maximo de cuentas que tiene un cliente?
 
 ---
 
@@ -66,7 +66,7 @@ Lista los clientes que tienen mas de una cuenta, mostrando nombre y cantidad de 
 ---
 
 ### Pregunta 9
-Lista las transacciones con monto mayor a 3,000, mostrando tipo, monto y descripcion.
+¿Cuantas transacciones superan los 3,000 y cual es el monto total de esas transacciones?
 
 ---
 
@@ -81,7 +81,7 @@ Lista las transacciones con monto mayor a 3,000, mostrando tipo, monto y descrip
 ---
 
 ### Pregunta 12
-Lista los clientes de Madrid que tienen cuentas de tipo "Nomina".
+¿Cuantos clientes de Madrid tienen cuentas de tipo "Nomina"?
 
 ---
 

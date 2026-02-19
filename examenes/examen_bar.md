@@ -61,7 +61,7 @@ Lista los bartenders del turno "Noche" con mas de 5 anos de experiencia.
 ---
 
 ### Pregunta 8
-Lista los bartenders y cuantas ventas ha realizado cada uno.
+¿Cual es el bartender que ha realizado mas ventas? Muestra su nombre y el total de ventas.
 
 ---
 
@@ -81,7 +81,7 @@ Lista las bebidas sin alcohol ordenadas por precio de menor a mayor.
 ---
 
 ### Pregunta 12
-¿Cual es el promedio de unidades vendidas por venta para cada bartender?
+¿Cual bartender tiene el mayor promedio de unidades vendidas por venta?
 
 ---
 

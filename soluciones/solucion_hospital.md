@@ -12,6 +12,8 @@ SELECT COUNT(*) AS total_pacientes
 FROM pacientes;
 ```
 
+**Respuesta:** 200
+
 *Todos vinieron por "un dolorcito" que termino siendo algo mas.*
 
 ---
@@ -52,6 +54,8 @@ SELECT AVG(costo) AS costo_promedio
 FROM consultas;
 ```
 
+**Respuesta:** 268.56
+
 *Mas barato que buscar sintomas en internet y asustarte.*
 
 ---
@@ -72,15 +76,18 @@ LIMIT 5;
 ---
 
 ## Pregunta 6
-**¿Cuantas consultas ha realizado cada doctor? Muestra nombre del doctor y cantidad.**
+**¿Cual es el doctor que ha realizado mas consultas? Muestra su nombre y el total de consultas.**
 
 ```sql
 SELECT d.nombre, COUNT(*) AS total_consultas
 FROM doctores d
 JOIN consultas c ON d.id = c.doctor_id
 GROUP BY d.id, d.nombre
-ORDER BY total_consultas DESC;
+ORDER BY total_consultas DESC
+LIMIT 1;
 ```
+
+**Respuesta:** Dr. Agustín del Yáñez (43 consultas)
 
 *Los mas ocupados probablemente duermen en el consultorio.*
 
@@ -96,41 +103,48 @@ ORDER BY anios_experiencia DESC
 LIMIT 1;
 ```
 
+**Respuesta:** Dr. Ramiro Aguilar Andreu (Oftalmologia, 29 años)
+
 *El Yoda de la medicina. Probablemente tiene historias increibles.*
 
 ---
 
 ## Pregunta 8
-**Lista los pacientes menores de 18 anos junto con su tipo de sangre.**
+**¿Cuantos pacientes menores de 18 anos hay y cual es su edad promedio?**
 
 ```sql
-SELECT nombre, edad, tipo_sangre
+SELECT COUNT(*) AS cantidad,
+       ROUND(AVG(edad), 2) AS edad_promedio
 FROM pacientes
-WHERE edad < 18
-ORDER BY edad;
+WHERE edad < 18;
 ```
+
+**Respuesta:** 43 pacientes, edad promedio: 10.49 años
 
 *Los valientes del hospital. Merecen una paleta despues de cada consulta.*
 
 ---
 
 ## Pregunta 9
-**¿Cual es el ingreso total generado por cada especialidad medica?**
+**¿Cual es la especialidad medica que genera mas ingresos y cuanto es el total?**
 
 ```sql
-SELECT d.especialidad, SUM(c.costo) AS ingresos_totales
+SELECT d.especialidad, ROUND(SUM(c.costo), 2) AS ingresos_totales
 FROM doctores d
 JOIN consultas c ON d.id = c.doctor_id
 GROUP BY d.especialidad
-ORDER BY ingresos_totales DESC;
+ORDER BY ingresos_totales DESC
+LIMIT 1;
 ```
+
+**Respuesta:** Oftalmologia (41,057.66)
 
 *Datos que el departamento de finanzas mira con una sonrisa (o no).*
 
 ---
 
 ## Pregunta 10
-**¿Cuantos pacientes hombres y mujeres hay en cada rango de edad? (0-17, 18-40, 41-65, 65+)**
+**¿Que rango de edad y genero tiene la mayor cantidad de pacientes?**
 
 ```sql
 SELECT
@@ -144,39 +158,52 @@ SELECT
     COUNT(*) AS cantidad
 FROM pacientes
 GROUP BY rango_edad, genero
-ORDER BY rango_edad, genero;
+ORDER BY cantidad DESC
+LIMIT 1;
 ```
+
+**Respuesta:** Rango 18-40, Masculino (29 pacientes)
 
 *Datos demograficos: el pan de cada dia de todo epidemiologo.*
 
 ---
 
 ## Pregunta 11
-**Lista los doctores que han atendido mas de 30 consultas, mostrando nombre y total de consultas.**
+**¿Cuantos doctores han atendido mas de 30 consultas?**
 
 ```sql
-SELECT d.nombre, COUNT(*) AS total_consultas
-FROM doctores d
-JOIN consultas c ON d.id = c.doctor_id
-GROUP BY d.id, d.nombre
-HAVING COUNT(*) > 30;
+SELECT COUNT(*) AS doctores_frecuentes
+FROM (
+    SELECT d.id
+    FROM doctores d
+    JOIN consultas c ON d.id = c.doctor_id
+    GROUP BY d.id
+    HAVING COUNT(*) > 30
+);
 ```
+
+**Respuesta:** 9
 
 *Los heroes sin capa (pero con bata blanca).*
 
 ---
 
 ## Pregunta 12
-**¿Cuales pacientes han tenido mas de 3 consultas en el ultimo ano?**
+**¿Cuantos pacientes han tenido mas de 3 consultas en el ultimo ano?**
 
 ```sql
-SELECT p.nombre, COUNT(*) AS num_consultas
-FROM pacientes p
-JOIN consultas c ON p.id = c.paciente_id
-WHERE c.fecha >= DATE('now', '-1 year')
-GROUP BY p.id, p.nombre
-HAVING COUNT(*) > 3;
+SELECT COUNT(*) AS pacientes_frecuentes
+FROM (
+    SELECT p.id
+    FROM pacientes p
+    JOIN consultas c ON p.id = c.paciente_id
+    WHERE c.fecha >= DATE('now', '-1 year')
+    GROUP BY p.id
+    HAVING COUNT(*) > 3
+);
 ```
+
+**Respuesta:** 50
 
 *Clientes frecuentes. Ojala sean solo chequeos de rutina.*
 

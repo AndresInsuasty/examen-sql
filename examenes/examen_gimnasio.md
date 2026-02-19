@@ -37,7 +37,7 @@
 ---
 
 ### Pregunta 3
-Lista el nombre y edad de todos los miembros mayores de 50 anos, ordenados de mayor a menor edad.
+¿Cuantos miembros mayores de 50 anos hay y cual es su edad promedio?
 
 ---
 
@@ -62,7 +62,7 @@ Lista todas las clases que duran mas de 60 minutos.
 ---
 
 ### Pregunta 8
-¿Cual es la calificacion promedio de cada clase? Muestra solo las clases con promedio mayor a 3.
+¿Cuantas clases tienen una calificacion promedio mayor a 3?
 
 ---
 
@@ -72,7 +72,7 @@ Lista todas las clases que duran mas de 60 minutos.
 ---
 
 ### Pregunta 10
-Lista el nombre de los miembros que han asistido a la clase de "Spinning" junto con la fecha de asistencia.
+¿Cuantas asistencias ha tenido la clase "Spinning" y cual es la calificacion promedio?
 
 ---
 

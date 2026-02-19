@@ -12,6 +12,8 @@ SELECT AVG(salario) AS salario_promedio
 FROM meseros;
 ```
 
+**Respuesta:** 1,819.85
+
 *Spoiler: Menos de lo que merecen por aguantar clientes dificiles.*
 
 ---
@@ -52,6 +54,8 @@ FROM ordenes
 WHERE fecha >= DATE('now', '-1 month');
 ```
 
+**Respuesta:** 75,755.25
+
 *El numero que hace feliz (o triste) al dueno.*
 
 ---
@@ -65,34 +69,44 @@ FROM ordenes
 WHERE propina IS NOT NULL;
 ```
 
+**Respuesta:** 18.79
+
 *Recordatorio: dejar propina es de buena educacion y buen karma.*
 
 ---
 
 ## Pregunta 6
-**Lista las 10 ordenes con el total mas alto, mostrando el id de la orden, total y propina.**
+**¿Cual es el total promedio de las 10 ordenes con mayor monto?**
 
 ```sql
-SELECT id, total, propina
-FROM ordenes
-ORDER BY total DESC
-LIMIT 10;
+SELECT ROUND(AVG(total), 2) AS promedio_top10
+FROM (
+    SELECT total
+    FROM ordenes
+    ORDER BY total DESC
+    LIMIT 10
+);
 ```
+
+**Respuesta:** 345.17
 
 *Las mesas que pidieron "traigan de todo" literalmente.*
 
 ---
 
 ## Pregunta 7
-**¿Cuantas ordenes ha atendido cada mesero? Muestra nombre del mesero y cantidad de ordenes.**
+**¿Cual es el mesero que ha atendido mas ordenes? Muestra su nombre y el total de ordenes.**
 
 ```sql
 SELECT m.nombre, COUNT(*) AS total_ordenes
 FROM meseros m
 JOIN ordenes o ON m.id = o.mesero_id
 GROUP BY m.id, m.nombre
-ORDER BY total_ordenes DESC;
+ORDER BY total_ordenes DESC
+LIMIT 1;
 ```
+
+**Respuesta:** Narcisa de Blázquez (26 órdenes)
 
 *Los que mas caminan, merecen los mejores zapatos.*
 
@@ -110,6 +124,8 @@ ORDER BY ingresos_generados DESC
 LIMIT 1;
 ```
 
+**Respuesta:** Macaria Graciela Pineda Carrera (5,175.01)
+
 *El empleado del mes eterno. Probablemente tambien el favorito del jefe.*
 
 ---
@@ -124,20 +140,27 @@ JOIN mesas m ON o.mesa_id = m.id
 WHERE m.ubicacion = 'Terraza';
 ```
 
+**Respuesta:** 2.85
+
 *La terraza: donde todos quieren estar, especialmente si hay wifi.*
 
 ---
 
 ## Pregunta 10
-**Lista los meseros que han atendido mas de 20 ordenes.**
+**¿Cuantos meseros han atendido mas de 20 ordenes?**
 
 ```sql
-SELECT m.nombre, COUNT(*) AS total_ordenes
-FROM meseros m
-JOIN ordenes o ON m.id = o.mesero_id
-GROUP BY m.id, m.nombre
-HAVING COUNT(*) > 20;
+SELECT COUNT(*) AS meseros_experimentados
+FROM (
+    SELECT m.id
+    FROM meseros m
+    JOIN ordenes o ON m.id = o.mesero_id
+    GROUP BY m.id
+    HAVING COUNT(*) > 20
+);
 ```
+
+**Respuesta:** 9
 
 *Los veteranos. Saben el menu de memoria y tus excusas tambien.*
 
@@ -152,18 +175,22 @@ FROM ordenes
 WHERE propina IS NOT NULL AND total > 0;
 ```
 
+**Respuesta:** 9.61%
+
 *Si es menos del 10%, hay que tener una conversacion seria.*
 
 ---
 
 ## Pregunta 12
-**¿Cuales mesas de capacidad 6 o mas personas estan actualmente disponibles?**
+**¿Cuantas mesas de capacidad 6 o mas personas estan actualmente disponibles?**
 
 ```sql
-SELECT id, capacidad, ubicacion
+SELECT COUNT(*) AS mesas_grandes_disponibles
 FROM mesas
 WHERE capacidad >= 6 AND disponible = 1;
 ```
+
+**Respuesta:** 8
 
 *Perfectas para cuando "somos pocos" significa "invitamos a medio mundo".*
 
