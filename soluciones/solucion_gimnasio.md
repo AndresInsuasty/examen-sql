@@ -176,19 +176,17 @@ ORDER BY tipo_membresia, genero;
 ---
 
 ## Pregunta 12
-**¿Cuales clases no han recibido ninguna calificacion de 5 estrellas?**
+**¿Cuantas clases tienen al menos una calificacion de 5 estrellas?**
 
 ```sql
-SELECT c.nombre
-FROM clases c
-WHERE c.id NOT IN (
-    SELECT DISTINCT clase_id
-    FROM asistencias
-    WHERE calificacion = 5
-);
+SELECT COUNT(DISTINCT clase_id) AS clases_5_estrellas
+FROM asistencias
+WHERE calificacion = 5;
 ```
 
-*O la clase es muy dificil, o muy temprano. Probablemente muy temprano.*
+**Respuesta:** 10
+
+*Las favoritas del gimnasio. Todas ganaron su estrella Michelin del fitness.*
 
 ---
 

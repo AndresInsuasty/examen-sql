@@ -82,7 +82,7 @@ Lista todas las clases que duran mas de 60 minutos.
 ---
 
 ### Pregunta 12
-¿Cuales clases no han recibido ninguna calificacion de 5 estrellas?
+¿Cuantas clases tienen al menos una calificacion de 5 estrellas?
 
 ---
 

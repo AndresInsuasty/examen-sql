@@ -12,7 +12,7 @@ SELECT AVG(salario) AS salario_promedio
 FROM meseros;
 ```
 
-**Respuesta:** 1,819.85
+**Respuesta:** 1819.85
 
 *Spoiler: Menos de lo que merecen por aguantar clientes dificiles.*
 
@@ -54,7 +54,7 @@ FROM ordenes
 WHERE fecha >= DATE('now', '-1 month');
 ```
 
-**Respuesta:** 75,755.25
+**Respuesta:** 75755.25
 
 *El numero que hace feliz (o triste) al dueno.*
 
@@ -124,7 +124,7 @@ ORDER BY ingresos_generados DESC
 LIMIT 1;
 ```
 
-**Respuesta:** Macaria Graciela Pineda Carrera (5,175.01)
+**Respuesta:** Macaria Graciela Pineda Carrera (5175.01)
 
 *El empleado del mes eterno. Probablemente tambien el favorito del jefe.*
 

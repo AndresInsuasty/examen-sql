@@ -30,7 +30,7 @@ FROM cuentas
 WHERE tipo_cuenta = 'Ahorro';
 ```
 
-**Respuesta:** 16,651.27
+**Respuesta:** 16651.27
 
 *El sueno de todo ahorrador: ver este numero crecer.*
 
@@ -51,7 +51,7 @@ FROM (
 );
 ```
 
-**Respuesta:** 101,566.97
+**Respuesta:** 101566.97
 
 *Los que reciben llamadas del gerente en su cumpleanos.*
 
@@ -81,7 +81,7 @@ WHERE tipo = 'Deposito'
 AND fecha >= DATE('now', '-1 month');
 ```
 
-**Respuesta:** 66,829.85
+**Respuesta:** 66829.85
 
 *Dinero entrando = banco feliz = accionistas felices.*
 
@@ -150,29 +150,13 @@ FROM transacciones
 WHERE monto > 3000;
 ```
 
-**Respuesta:** 186 transacciones, monto total: 750,978.13
+**Respuesta:** 186 transacciones, monto total: 750978.13
 *Las que activan alertas y generan correos de "¿Fuiste tu?".*
 
 ---
 
 ## Pregunta 10
 **¿Cual es el cliente mas joven y cual es el mas viejo del banco? Muestra nombre y edad de ambos.**
-
-```sql
--- Cliente mas joven
-SELECT nombre, edad, 'Mas joven' AS categoria
-FROM clientes
-ORDER BY edad ASC
-LIMIT 1;
-
--- Cliente mas viejo
-SELECT nombre, edad, 'Mas viejo' AS categoria
-FROM clientes
-ORDER BY edad DESC
-LIMIT 1;
-```
-
-*O en una sola query elegante:*
 
 ```sql
 SELECT nombre, edad

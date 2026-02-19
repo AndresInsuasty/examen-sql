@@ -1,0 +1,44 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+
+# Entorno virtual
+.venv/
+venv/
+ENV/
+env/
+
+# IDEs y editores
+.vscode/
+.idea/
+.claude/
+*.swp
+*.swo
+*~
+
+# macOS
+.DS_Store
+.AppleDouble
+.LSOverride
+
+# SQLite
+*.db-journal
+*.db-wal
+*.db-shm
+
+# Jupyter Notebook
+.ipynb_checkpoints
+
+# Archivos de testing temporales
+.pytest_cache/
+.coverage
+htmlcov/
+
+# Archivos de configuración locales
+*.local
+
+# Logs
+*.log

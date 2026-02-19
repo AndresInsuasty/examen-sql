@@ -137,7 +137,7 @@ ORDER BY ingresos_totales DESC
 LIMIT 1;
 ```
 
-**Respuesta:** Oftalmologia (41,057.66)
+**Respuesta:** Oftalmologia (41057.66)
 
 *Datos que el departamento de finanzas mira con una sonrisa (o no).*
 
@@ -162,7 +162,7 @@ ORDER BY cantidad DESC
 LIMIT 1;
 ```
 
-**Respuesta:** Rango 18-40, Masculino (29 pacientes)
+**Respuesta:** 18-40, M, 29
 
 *Datos demograficos: el pan de cada dia de todo epidemiologo.*
 
